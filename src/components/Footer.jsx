@@ -8,6 +8,13 @@ const C = {
     orangeSoft: "#FF4D8F",
     lavender: "#DCD2FF",
 };
+/* ── smart email link: Gmail compose on desktop, mailto on mobile ── */
+function smartMailLink(email, subject = "") {
+    const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    return isMobile
+        ? `mailto:${email}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`
+        : `https://mail.google.com/mail/?view=cm&to=${email}${subject ? `&su=${encodeURIComponent(subject)}` : ""}`;
+}
 
 const STYLES = `
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500&display=swap');
@@ -237,7 +244,7 @@ function ContactRow({ iconKey, label, value, href }) {
     return (
         <Tag
             href={href}
-            target={href ? "_blank" : undefined}
+            target={href && !href.startsWith("mailto:") ? "_blank" : undefined}
             rel="noopener noreferrer"
             onMouseEnter={() => setHov(true)}
             onMouseLeave={() => setHov(false)}
@@ -452,7 +459,7 @@ export default function Footer({ setPage, goToService }) {
                 <div className="ftr-col ftr-contact-col">
                     <SectionLabel>Get In Touch</SectionLabel>
                     <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", marginBottom: "1.5rem" }}>
-                        <ContactRow iconKey="email" label="Email" value="gugulotre@gmail.com" href="mailto:gugulotre@gmail.com" />
+                        <ContactRow iconKey="email" label="Email" value="gugulotre@gmail.com" href={smartMailLink("gugulotre@gmail.com", "Project Enquiry")} />
                         <ContactRow iconKey="whatsapp" label="WhatsApp" value="+91 9392281448" href="https://wa.me/919392281448" />
                         <ContactRow iconKey="location" label="Location" value="SR Nagar, Hyderabad" href={null} />
                     </div>

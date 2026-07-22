@@ -11,6 +11,13 @@ const C = {
     purple: "#5A9DFE",
     purpleMid: "#3887FD",
 };
+/* ── smart email link: Gmail compose on desktop, mailto on mobile ── */
+function smartMailLink(email, subject = "") {
+    const isMobile = typeof navigator !== "undefined" && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    return isMobile
+        ? `mailto:${email}${subject ? `?subject=${encodeURIComponent(subject)}` : ""}`
+        : `https://mail.google.com/mail/?view=cm&to=${email}${subject ? `&su=${encodeURIComponent(subject)}` : ""}`;
+}
 
 const SOCIAL_ICONS = {
     instagram: (
@@ -273,7 +280,7 @@ function InfoCard({ iconKey, label, value, sub, href, sm }) {
             </div>
         </div>
     );
-    return href ? <a href={href} style={{ textDecoration: "none" }}>{inner}</a> : inner;
+    return href ? <a href={href} target={href.startsWith("mailto:") ? undefined : "_blank"} rel="noopener noreferrer" style={{ textDecoration: "none" }}>{inner}</a> : inner;
 }
 
 /* ════ SOCIAL BUTTON ════ */
@@ -752,7 +759,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
                                     position: "relative", zIndex: 1,
                                     marginBottom: sm ? "1rem" : "1.3rem",
                                 }}>
-                                    <InfoCard iconKey="email" label="Email" value="gugulotre@gmail.com" sub="Reply within 24 hours" href="mailto:gugulotre@gmail.com" sm={sm} />
+                                    <InfoCard iconKey="email" label="Email" value="gugulotre@gmail.com" sub="Reply within 24 hours" href={smartMailLink("gugulotre@gmail.com", "Project Enquiry")} sm={sm} />
                                     <InfoCard iconKey="whatsapp" label="WhatsApp" value="+91 9392281448" sub="Quick chats & project briefs" href="https://wa.me/919392281448" sm={sm} />
                                     <InfoCard iconKey="location" label="Location" value="SR Nagar, Hyderabad" sub="Telangana, India 500038" sm={sm} />
                                 </div>
