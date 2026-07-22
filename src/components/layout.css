@@ -1,0 +1,141 @@
+/* layout.css */
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.7);
+        opacity: .35;
+    }
+}
+
+/* Nav */
+.nav-links {
+    display: flex !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.nav-cta {
+    display: inline-flex !important;
+}
+
+.nav-ham {
+    display: none !important;
+}
+
+/* Mob menu */
+.mob-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 299;
+    overflow-y: auto;
+    background: #1D2060;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem 4%;
+}
+
+.mob-menu {
+    min-height: calc(100vh - 70px);
+
+    justify-content: space-between;
+}
+
+.mob-menu.open {
+    transform: translateX(0);
+}
+
+.mob-menu-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.1rem;
+    border-radius: 12px;
+    margin-bottom: 0.4rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.04);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: rgba(247, 243, 236, 0.7);
+    text-align: left;
+    cursor: none;
+    transition: all 0.2s;
+}
+
+.mob-menu-link.active {
+    background: rgba(255, 0, 107, 0.12);
+    color: #FF006B;
+    border: 1px solid rgba(255, 0, 107, 0.2);
+}
+
+.mob-menu-cta {
+    margin-top: auto;
+    padding-bottom: 2rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+
+
+/* Footer Grid */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1279px) {
+    .footer-grid {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 1023px) {
+    .nav-links {
+        display: none !important;
+    }
+
+    .nav-cta {
+        display: inline-flex !important;
+    }
+
+    .nav-ham {
+        display: flex !important;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-cta {
+        display: none !important;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-bottom-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+    }
+}
