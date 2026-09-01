@@ -85,7 +85,7 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
         },
         
         {
-            id: "wp", num: "05", name: "WordPress & CMS", icon: "⚡",
+            id: "wp", num: "04", name: "WordPress & CMS", icon: "⚡",
             tag: "Manageable Platforms",
             iconBg: "rgba(47, 52, 144,0.08)",
             desc: "Custom WordPress themes and plugins from scratch — no bloated page builders. Fast, clean, exactly on-brand. Headless CMS setups available for teams that need editorial flexibility at developer speed.",
@@ -93,7 +93,7 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
             deliverables: ["Custom theme from scratch", "Plugin development if needed", "Admin training session", "SEO plugin setup", "Speed optimisation & CDN"],
         },
         {
-            id: "ecom", num: "04", name: "E-Commerce & Marketplace Management", icon: "🛒",
+            id: "ecom", num: "05", name: "E-Commerce & Marketplace Management", icon: "🛒",
             tag: "We Manage, You Grow",
             iconBg: "rgba(56,135,253,0.07)",
             desc: "End-to-end e-commerce support — custom online stores when you need one, plus full seller account management across Flipkart, Amazon, Meesho, Blinkit, Instamart and more. We handle the day-to-day so your marketplace accounts keep growing.",
