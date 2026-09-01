@@ -332,8 +332,8 @@ export default function Footer({ setPage, goToService }) {
         { label: "Web Development", id: "web" },
         { label: "UI / UX Design", id: "uiux" },
         { label: "App Development", id: "app" },
-        { label: "E-Commerce Stores", id: "ecom" },
         { label: "WordPress & CMS", id: "wp" },
+        { label: "E-Commerce Solutions", id: "ecom" },
         { label: "Graphic Design", id: "gd" },
     ];
 
