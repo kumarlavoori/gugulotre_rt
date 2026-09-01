@@ -83,14 +83,7 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
             techs: ["Flutter", "React Native", "Dart", "Swift", "Kotlin", "Firebase", "Supabase", "REST APIs", "GraphQL", "Push Notifications", "In-App Purchases", "Google Maps SDK", "Stripe SDK", "App Store Connect", "Play Console", "Fastlane"],
             deliverables: ["Cross-platform iOS & Android app", "E-commerce / shopping app with cart & checkout", "Firebase or backend integration", "App Store & Play Store submission", "Push notification setup", "Post-launch bug fix period"],
         },
-        {
-            id: "ecom", num: "04", name: "E-Commerce & Marketplace Management", icon: "🛒",
-            tag: "We Manage, You Grow",
-            iconBg: "rgba(56,135,253,0.07)",
-            desc: "End-to-end e-commerce support — custom online stores when you need one, plus full seller account management across Flipkart, Amazon, Meesho, Blinkit, Instamart and more. We handle the day-to-day so your marketplace accounts keep growing.",
-            techs: ["Flipkart", "Amazon", "Meesho", "Blinkit", "Instamart", "WooCommerce", "Shopify", "Next.js Commerce", "Stripe", "Razorpay"],
-            deliverables: ["Seller account setup & maintenance", "Product listing & optimization", "Orders & returns management", "Ads campaign management", "Price & stock monitoring", "Account health monitoring", "Sales & performance analysis", "Seller issues & support"],
-        },
+        
         {
             id: "wp", num: "05", name: "WordPress & CMS", icon: "⚡",
             tag: "Manageable Platforms",
@@ -98,6 +91,14 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
             desc: "Custom WordPress themes and plugins from scratch — no bloated page builders. Fast, clean, exactly on-brand. Headless CMS setups available for teams that need editorial flexibility at developer speed.",
             techs: ["WordPress", "WooCommerce", "ACF Pro", "CPT UI", "Elementor (custom)", "Gutenberg Blocks", "REST API", "WP GraphQL", "Sanity", "Contentful", "Strapi", "Yoast SEO", "Cloudflare CDN", "WP Rocket", "Multisite"],
             deliverables: ["Custom theme from scratch", "Plugin development if needed", "Admin training session", "SEO plugin setup", "Speed optimisation & CDN"],
+        },
+        {
+            id: "ecom", num: "04", name: "E-Commerce & Marketplace Management", icon: "🛒",
+            tag: "We Manage, You Grow",
+            iconBg: "rgba(56,135,253,0.07)",
+            desc: "End-to-end e-commerce support — custom online stores when you need one, plus full seller account management across Flipkart, Amazon, Meesho, Blinkit, Instamart and more. We handle the day-to-day so your marketplace accounts keep growing.",
+            techs: ["Flipkart", "Amazon", "Meesho", "Blinkit", "Instamart", "WooCommerce", "Shopify", "Next.js Commerce", "Stripe", "Razorpay"],
+            deliverables: ["Seller account setup & maintenance", "Product listing & optimization", "Orders & returns management", "Ads campaign management", "Price & stock monitoring", "Account health monitoring", "Sales & performance analysis", "Seller issues & support"],
         },
         {
             id: "gd", num: "06", name: "Graphic Design", icon: "✏️",
