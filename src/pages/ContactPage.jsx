@@ -332,12 +332,9 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
     const md = width > 640 && width <= 1023;
 
     const SERVICES = [
-        { label: "Web Development", icon: "🌐" },
-        { label: "UI / UX Design", icon: "🎨" },
-        { label: "App Development", icon: "📱" },
-        { label: "E-Commerce", icon: "🛒" },
-        { label: "WordPress & CMS", icon: "⚡" },
-        { label: "Graphic Design", icon: "✏️" },
+        { label: "Static Website", icon: "🌐" },
+        { label: "Dynamic Website", icon: "⚡" },
+        { label: "E-Commerce Website", icon: "🛒" },
         { label: "Other", icon: "✨" },
     ];
 
@@ -348,7 +345,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
         { label: "LinkedIn", iconKey: "linkedin", color: "#0A66C2", href: "https://www.linkedin.com/in/gugulotre/" },
     ];
 
-    const [form, setForm] = useState({ name: "", phone: "", email: "", company: "", message: "", otherService: "" });
+    const [form, setForm] = useState({ name: "", phone: "", email: "", company: "", message: "", otherService: "", budget: "" });
     const [selectedServices, setSelectedServices] = useState([]);
     const [submitted, setSubmitted] = useState(false);
     const [submittedVia, setSubmittedVia] = useState("");
@@ -371,7 +368,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
 
     const buildServiceNames = () =>
         selectedServices.map(i =>
-            i === 6 ? `Other: ${form.otherService.trim() || "unspecified"}` : SERVICES[i].label
+            i === 3 ? `Other: ${form.otherService.trim() || "unspecified"}` : SERVICES[i].label
         ).join(", ");
 
     /* ── WhatsApp submit ── */
@@ -389,6 +386,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
             form.email ? `Email: ${form.email}` : null,
             form.company ? `Company: ${form.company}` : null,
             `Services Needed: ${buildServiceNames()}`,
+            form.budget ? `Budget: ${form.budget}` : null,
             form.message ? `Message: ${form.message}` : null,
             ``,
             `Looking forward to hearing from you!`,
@@ -419,6 +417,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
             form.email ? `Email: ${form.email}` : null,
             form.company ? `Company: ${form.company}` : null,
             `Services Needed: ${buildServiceNames()}`,
+            form.budget ? `Budget: ${form.budget}` : null,
             form.message ? `Message: ${form.message}` : null,
             ``,
             `Looking forward to hearing from you!`,
@@ -438,7 +437,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
     const resetForm = () => {
         setSubmitted(false);
         setSubmittedVia("");
-        setForm({ name: "", phone: "", email: "", company: "", message: "", otherService: "" });
+        setForm({ name: "", phone: "", email: "", company: "", message: "", otherService: "", budget: "" });
         setSelectedServices([]);
     };
 
@@ -604,7 +603,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
                                         </div>
 
                                         {/* Other — custom input */}
-                                        {selectedServices.includes(6) && (
+                                        {selectedServices.includes(3) && (
                                             <div style={{ marginTop: "0.75rem" }}>
                                                 <input
                                                     type="text"
@@ -629,6 +628,9 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
 
                                         {errors.services && <div style={errStyle}>Please select at least one service</div>}
                                     </div>
+
+                                    <FloatInput label="Your Budget (optional)" value={form.budget}
+                                        onChange={e => setForm(f => ({ ...f, budget: e.target.value }))} />
 
                                     <FloatInput label="Tell us about your project (optional)" value={form.message} multiline rows={sm ? 4 : 5}
                                         onChange={e => setForm(f => ({ ...f, message: e.target.value }))} />
