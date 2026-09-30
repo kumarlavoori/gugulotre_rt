@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useRef, Fragment } from "react";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 
 /* ════ THEME ════ */
 const C = {
@@ -337,6 +337,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
         { label: "E-Commerce Website", icon: "🛒" },
         { label: "Other", icon: "✨" },
     ];
+    const OTHER_IDX = SERVICES.length - 1; // "Other" must stay last in SERVICES
 
     const SOCIALS = [
         { label: "Instagram", iconKey: "instagram", color: "#E1306C", href: "https://www.instagram.com/gugulotre/" },
@@ -368,7 +369,7 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
 
     const buildServiceNames = () =>
         selectedServices.map(i =>
-            i === 3 ? `Other: ${form.otherService.trim() || "unspecified"}` : SERVICES[i].label
+            i === OTHER_IDX ? `Other: ${form.otherService.trim() || "unspecified"}` : SERVICES[i].label
         ).join(", ");
 
     /* ── WhatsApp submit ── */
@@ -595,33 +596,38 @@ export default function ContactPage({ setPage, targetSection, onSectionHandled }
                                             Services Needed <span style={{ color: C.coral }}>*</span>
                                         </div>
                                         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                                            {SERVICES.map((s, i) => (
-                                                <Fragment key={s.label}>
-                                                    <ServiceChip {...s} sm={sm}
-                                                        selected={selectedServices.includes(i)}
-                                                        onClick={() => { toggleService(i); setErrors(ev => ({ ...ev, services: false })); }} />
-                                                    {i === 3 && selectedServices.includes(3) && (
-                                                        <input
-                                                            type="text"
-                                                            placeholder="Describe your requirement..."
-                                                            value={form.otherService}
-                                                            onChange={e => setForm(f => ({ ...f, otherService: e.target.value }))}
-                                                            onFocus={() => setOtherFocused(true)}
-                                                            onBlur={() => setOtherFocused(false)}
-                                                            style={{
-                                                                flex: "1 1 180px", minWidth: 0, padding: sm ? "0.42rem 0.8rem" : "0.52rem 1rem",
-                                                                fontFamily: "'Outfit',sans-serif", fontSize: "0.82rem",
-                                                                color: C.ink, background: C.cream,
-                                                                border: `1.5px solid ${otherFocused ? C.coral : "rgba(255, 0, 107,0.25)"}`,
-                                                                borderRadius: 50, outline: "none",
-                                                                boxSizing: "border-box",
-                                                                boxShadow: otherFocused ? "0 0 0 3px rgba(255, 0, 107,0.07)" : "none",
-                                                                transition: "border-color 0.22s, box-shadow 0.22s",
-                                                            }}
-                                                        />
-                                                    )}
-                                                </Fragment>
+                                            {SERVICES.map((s, i) => i === OTHER_IDX ? null : (
+                                                <ServiceChip key={s.label} {...s} sm={sm}
+                                                    selected={selectedServices.includes(i)}
+                                                    onClick={() => { toggleService(i); setErrors(ev => ({ ...ev, services: false })); }} />
                                             ))}
+                                        </div>
+
+                                        {/* Other + its input: always on their own last row, so height never changes */}
+                                        <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", marginTop: "0.4rem" }}>
+                                            <ServiceChip {...SERVICES[OTHER_IDX]} sm={sm}
+                                                selected={selectedServices.includes(OTHER_IDX)}
+                                                onClick={() => { toggleService(OTHER_IDX); setErrors(ev => ({ ...ev, services: false })); }} />
+                                            {selectedServices.includes(OTHER_IDX) && (
+                                                <input
+                                                    type="text"
+                                                    placeholder="Describe your requirement..."
+                                                    value={form.otherService}
+                                                    onChange={e => setForm(f => ({ ...f, otherService: e.target.value }))}
+                                                    onFocus={() => setOtherFocused(true)}
+                                                    onBlur={() => setOtherFocused(false)}
+                                                    style={{
+                                                        flex: 1, minWidth: 0, padding: sm ? "0.42rem 0.8rem" : "0.52rem 1rem",
+                                                        fontFamily: "'Outfit',sans-serif", fontSize: "0.82rem",
+                                                        color: C.ink, background: C.cream,
+                                                        border: `1.5px solid ${otherFocused ? C.coral : "rgba(255, 0, 107,0.25)"}`,
+                                                        borderRadius: 50, outline: "none",
+                                                        boxSizing: "border-box",
+                                                        boxShadow: otherFocused ? "0 0 0 3px rgba(255, 0, 107,0.07)" : "none",
+                                                        transition: "border-color 0.22s, box-shadow 0.22s",
+                                                    }}
+                                                />
+                                            )}
                                         </div>
 
                                         {errors.services && <div style={errStyle}>Please select at least one service</div>}
