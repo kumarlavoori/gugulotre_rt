@@ -8,7 +8,7 @@ function NavLink({ label, active, onClick }) {
     const [hov, setHov] = useState(false);
     return (
         <button onClick={onClick} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-            style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.83rem", fontWeight: 600, border: "none", cursor: "none", color: active ? "#fff" : hov ? C.coral : C.inkSoft, background: active ? C.coral : hov ? "rgba(255, 0, 107,0.07)" : "transparent", padding: "0.4rem 1rem", borderRadius: 50, boxShadow: active ? "0 3px 12px rgba(255, 0, 107,0.28)" : "none", transition: "all 0.2s" }}>
+            style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.83rem", fontWeight: 600, border: "none", cursor: "none", color: active ? "#fff" : hov ? C.coral : C.inkSoft, background: active ? C.coral : hov ? "rgba(255, 0, 107,0.07)" : "transparent", padding: "0.4rem clamp(0.55rem, 1.1vw, 1rem)", borderRadius: 50, boxShadow: active ? "0 3px 12px rgba(255, 0, 107,0.28)" : "none", transition: "all 0.2s" }}>
             {label}
         </button>
     );
@@ -19,7 +19,7 @@ export default function Navbar({ page, setPage, goToContactForm }) {
     const [width, setWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1280);
 
     // ← REMOVED "Pricing"
-    const links = ["Home", "About", "Services", "Process", "Contact"];
+    const links = ["Home", "About", "Services", "Process", "Careers", "Contact"];
 
     useEffect(() => {
         const h = () => setWidth(window.innerWidth);

@@ -8,6 +8,8 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ProcessPage from './pages/ProcessPage';
 import ContactPage from './pages/ContactPage';
+import CareersPage from './pages/CareersPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import './index.css';
 
 export default function App() {
@@ -21,7 +23,9 @@ export default function App() {
       "/about": "Gugulotre | About",
       "/services": "Gugulotre | Services",
       "/process": "Gugulotre | Process",
+      "/careers": "Gugulotre | Careers",
       "/contact": "Gugulotre | Contact",
+      "/privacy-policy": "Gugulotre | Privacy Policy",
     };
     document.title = titles[location.pathname] || "Gugulotre";
   }, [location.pathname]);
@@ -46,7 +50,7 @@ export default function App() {
   };
 
   const handleSetPage = (p) => {
-    const routes = { Home: "/", About: "/about", Services: "/services", Process: "/process", Contact: "/contact" };
+    const routes = { Home: "/", About: "/about", Services: "/services", Process: "/process", Careers: "/careers", Contact: "/contact", Privacy: "/privacy-policy" };
     setTargetSection(null); // clear any target so page goes to top
     navigate(routes[p] || "/");
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -77,6 +81,8 @@ export default function App() {
               onSectionHandled={() => setTimeout(() => setTargetSection(null), 500)}
             />}
           />
+          <Route path="/careers" element={<CareersPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage setPage={handleSetPage} />} />
           <Route path="/contact" element={
             <ContactPage
               setPage={handleSetPage}

@@ -68,32 +68,23 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
             deliverables: ["Fully responsive website or web app", "Custom e-commerce website / online store", "SEO-optimised page structure", "CMS integration if needed", "Performance audit & optimisation", "Full source code + deployment"],
         },
         {
-            id: "uiux", num: "02", name: "UI / UX Design", icon: "🎨",
-            tag: "Design Systems & Prototypes",
-            iconBg: "rgba(255, 0, 107,0.07)",
-            desc: "Design-first sprints in Figma. User flows, wireframes, and full visual systems — every decision backed by UX research and conversion principles. You see everything before we write a line of code.",
-            techs: ["Figma", "FigJam", "Adobe XD", "Illustrator", "Photoshop", "Prototyping", "Wireframing", "Design Systems", "User Research", "A/B Testing", "Accessibility (WCAG)", "Motion Design", "Lottie", "Zeplin", "Storybook"],
-            deliverables: ["User flow diagrams", "Lo-fi to hi-fi wireframes", "Full Figma design system", "Interactive prototype", "Handoff-ready component library"],
+            id: "gd", num: "02", name: "Graphic Design", icon: "✏️",
+            tag: "Branding & Visual Identity",
+            iconBg: "rgba(255,0,107,0.08)",
+            desc: "Bold logos, full brand identities, marketing materials, and print-ready assets — every visual crafted to make your brand instantly recognisable and impossible to ignore.",
+            techs: ["Adobe Illustrator", "Adobe Photoshop", "Adobe InDesign", "Figma", "After Effects", "Canva Pro", "CorelDRAW", "Brand Guidelines", "Typography Systems", "Colour Theory", "Print Design", "Social Media Kits", "Pitch Deck Design", "Packaging Design", "Vector Art"],
+            deliverables: ["Logo & brand identity system", "Brand style guide (colours, fonts, rules)", "Social media design kit", "Marketing & print collateral", "Full source files in all formats"],
         },
         {
-            id: "app", num: "03", name: "App Development", icon: "📱",
-            tag: "iOS & Android",
-            iconBg: "rgba(0,160,100,0.07)",
-            desc: "One codebase, two platforms. Cross-platform iOS and Android apps with Flutter and React Native that feel native, run fast, and look stunning — including full e-commerce and shopping apps with cart, checkout, and order tracking. From MVP to full App Store launch.",
-            techs: ["Flutter", "React Native", "Dart", "Swift", "Kotlin", "Firebase", "Supabase", "REST APIs", "GraphQL", "Push Notifications", "In-App Purchases", "Google Maps SDK", "Stripe SDK", "App Store Connect", "Play Console", "Fastlane"],
-            deliverables: ["Cross-platform iOS & Android app", "E-commerce / shopping app with cart & checkout", "Firebase or backend integration", "App Store & Play Store submission", "Push notification setup", "Post-launch bug fix period"],
-        },
-        
-        {
-            id: "wp", num: "04", name: "WordPress & CMS", icon: "⚡",
-            tag: "Manageable Platforms",
-            iconBg: "rgba(47, 52, 144,0.08)",
-            desc: "Custom WordPress themes and plugins from scratch — no bloated page builders. Fast, clean, exactly on-brand. Headless CMS setups available for teams that need editorial flexibility at developer speed.",
-            techs: ["WordPress", "WooCommerce", "ACF Pro", "CPT UI", "Elementor (custom)", "Gutenberg Blocks", "REST API", "WP GraphQL", "Sanity", "Contentful", "Strapi", "Yoast SEO", "Cloudflare CDN", "WP Rocket", "Multisite"],
-            deliverables: ["Custom theme from scratch", "Plugin development if needed", "Admin training session", "SEO plugin setup", "Speed optimisation & CDN"],
+            id: "video", num: "03", name: "Video Editing", icon: "🎬",
+            tag: "Reels, Ads & Brand Videos",
+            iconBg: "rgba(124,156,255,0.10)",
+            desc: "Scroll-stopping reels, promos, and brand videos — cut for rhythm, colour-graded for mood, and sound-designed to keep your audience watching. From raw footage to platform-ready exports, handled end to end.",
+            techs: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Final Cut Pro", "CapCut Pro", "Motion Graphics", "Colour Grading", "Sound Design", "Subtitles & Captions", "Logo Animation", "Reels & Shorts", "YouTube Edits", "Thumbnails", "Storyboarding"],
+            deliverables: ["Reels, Shorts & social media videos", "Promo, ad & brand videos", "Motion graphics & logo animation", "Colour grading & sound mixing", "Subtitles & captions", "Exports for every platform & format"],
         },
         {
-            id: "ecom", num: "05", name: "E-Commerce & Marketplace Management", icon: "🛒",
+            id: "ecom", wide: true, num: "04", name: "E-Commerce & Marketplace Management", icon: "🛒",
             tag: "We Manage, You Grow",
             iconBg: "rgba(56,135,253,0.07)",
             desc: "End-to-end e-commerce support — custom online stores when you need one, plus full seller account management across Flipkart, Amazon, Meesho, Blinkit, Instamart and more. We handle the day-to-day so your marketplace accounts keep growing.",
@@ -101,12 +92,28 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
             deliverables: ["Seller account setup & maintenance", "Product listing & optimization", "Orders & returns management", "Ads campaign management", "Price & stock monitoring", "Account health monitoring", "Sales & performance analysis", "Seller issues & support"],
         },
         {
-            id: "gd", num: "06", name: "Graphic Design", icon: "✏️",
-            tag: "Branding & Visual Identity",
-            iconBg: "rgba(255,0,107,0.08)",
-            desc: "Bold logos, full brand identities, marketing materials, and print-ready assets — every visual crafted to make your brand instantly recognisable and impossible to ignore.",
-            techs: ["Adobe Illustrator", "Adobe Photoshop", "Adobe InDesign", "Figma", "After Effects", "Canva Pro", "CorelDRAW", "Brand Guidelines", "Typography Systems", "Colour Theory", "Print Design", "Social Media Kits", "Pitch Deck Design", "Packaging Design", "Vector Art"],
-            deliverables: ["Logo & brand identity system", "Brand style guide (colours, fonts, rules)", "Social media design kit", "Marketing & print collateral", "Full source files in all formats"],
+            id: "uiux", num: "05", name: "UI / UX Design", icon: "🎨",
+            tag: "Design Systems & Prototypes",
+            iconBg: "rgba(255, 0, 107,0.07)",
+            desc: "Design-first sprints in Figma. User flows, wireframes, and full visual systems — every decision backed by UX research and conversion principles. You see everything before we write a line of code.",
+            techs: ["Figma", "FigJam", "Adobe XD", "Illustrator", "Photoshop", "Prototyping", "Wireframing", "Design Systems", "User Research", "A/B Testing", "Accessibility (WCAG)", "Motion Design", "Lottie", "Zeplin", "Storybook"],
+            deliverables: ["User flow diagrams", "Lo-fi to hi-fi wireframes", "Full Figma design system", "Interactive prototype", "Handoff-ready component library"],
+        },
+        {
+            id: "wp", num: "06", name: "WordPress & CMS", icon: "⚡",
+            tag: "Manageable Platforms",
+            iconBg: "rgba(47, 52, 144,0.08)",
+            desc: "Custom WordPress themes and plugins from scratch — no bloated page builders. Fast, clean, exactly on-brand. Headless CMS setups available for teams that need editorial flexibility at developer speed.",
+            techs: ["WordPress", "WooCommerce", "ACF Pro", "CPT UI", "Elementor (custom)", "Gutenberg Blocks", "REST API", "WP GraphQL", "Sanity", "Contentful", "Strapi", "Yoast SEO", "Cloudflare CDN", "WP Rocket", "Multisite"],
+            deliverables: ["Custom theme from scratch", "Plugin development if needed", "Admin training session", "SEO plugin setup", "Speed optimisation & CDN"],
+        },
+        {
+            id: "app", num: "07", name: "App Development", icon: "📱",
+            tag: "iOS & Android",
+            iconBg: "rgba(0,160,100,0.07)",
+            desc: "One codebase, two platforms. Cross-platform iOS and Android apps with Flutter and React Native that feel native, run fast, and look stunning — including full e-commerce and shopping apps with cart, checkout, and order tracking. From MVP to full App Store launch.",
+            techs: ["Flutter", "React Native", "Dart", "Swift", "Kotlin", "Firebase", "Supabase", "REST APIs", "GraphQL", "Push Notifications", "In-App Purchases", "Google Maps SDK", "Stripe SDK", "App Store Connect", "Play Console", "Fastlane"],
+            deliverables: ["Cross-platform iOS & Android app", "E-commerce / shopping app with cart & checkout", "Firebase or backend integration", "App Store & Play Store submission", "Push notification setup", "Post-launch bug fix period"],
         },
     ];
 
@@ -153,7 +160,7 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
                 <Reveal><STag>Everything We Build</STag></Reveal>
                 <Reveal delay={0.08}>
                     <h2 style={{ fontFamily: "'Bebas Neue',sans-serif", fontSize: "clamp(2.2rem,5vw,4rem)", lineHeight: 0.95, color: C.ink }}>
-                        SIX SERVICES.<br /><span style={{ color: C.coral }}>ONE CREATIVE SPACE.</span>
+                        SEVEN SERVICES.<br /><span style={{ color: C.coral }}>ONE CREATIVE SPACE.</span>
                     </h2>
                 </Reveal>
             </div>
@@ -167,7 +174,7 @@ function ServiceExplorer({ setPage, targetService, onServiceHandled, goToContact
                                 id={`svc-${s.id}`}
                                 data-hover
                                 onClick={() => handleSelect(i)}
-                                className="svc-list-row"
+                                className={s.wide ? "svc-list-row svc-list-wide" : "svc-list-row"}
                                 style={{
                                     borderLeft: `3px solid ${active === i ? C.coral : "transparent"}`,
                                     background: active === i ? "#fff" : "transparent",

@@ -342,7 +342,9 @@ export default function Footer({ setPage, goToService }) {
         { label: "About Us", page: "About" },
         { label: "Our Services", page: "Services" },
         { label: "Our Process", page: "Process" },
+        { label: "Careers", page: "Careers" },
         { label: "Contact", page: "Contact" },
+        { label: "Privacy Policy", page: "Privacy" },
     ];
 
     const SOCIALS = [

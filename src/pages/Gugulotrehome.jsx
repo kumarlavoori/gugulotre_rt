@@ -43,7 +43,7 @@ function STag({ children, light = false, center = false }) {
 }
 
 /* ════════════ SCROLL REVEAL ════════════ */
-function Reveal({ children, delay = 0, style = {} }) {
+function Reveal({ children, delay = 0, style = {}, className }) {
     const ref = useRef(null);
     const [vis, setVis] = useState(false);
     useEffect(() => {
@@ -52,7 +52,7 @@ function Reveal({ children, delay = 0, style = {} }) {
         return () => obs.disconnect();
     }, []);
     return (
-        <div ref={ref} style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(28px)", transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`, ...style }}>
+        <div ref={ref} className={className} style={{ opacity: vis ? 1 : 0, transform: vis ? "translateY(0)" : "translateY(28px)", transition: `opacity 0.65s ease ${delay}s, transform 0.65s ease ${delay}s`, ...style }}>
             {children}
         </div>
     );
@@ -92,6 +92,7 @@ const Icon = {
     Mail: () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>,
     ArrowRight: () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>,
     Brush: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.07" /><path d="M7.07 14.94C5.79 16.2 4 16.5 2.12 18c-.95.77-.54 2.33.49 2.71 1.26.47 2.47-.46 3.65-.46 1.57 0 2.4 1.11 3.44 1.55 1.06.45 2.13-.14 2.4-1.28.36-1.5-.5-2.98-.5-4.52" /></svg>,
+    Video: () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" /></svg>,
 };
 
 /* ════════════ TECH STACK DATA ════════════ */
@@ -411,20 +412,36 @@ function HeroServicePanel() {
             strip: "Engineered for speed, search rankings, and long-term scalability.",
         },
         {
+            label: "Graphic Design", color: "#FF5FA2",
+            desc: "Bold logos, brand systems, and print-ready assets — every visual crafted to make your brand impossible to ignore.",
+            features: ["Brand Identity", "Print Ready", "Multi-Format"],
+            tech: ["Adobe Illustrator", "Photoshop", "InDesign", "Figma", "After Effects", "Brand Guidelines", "Typography Systems", "Colour Theory", "Social Media Kits", "Packaging Design"],
+            badges: ["🎨 Brand Identity", "🖨️ Print Ready", "📐 Vector Art"],
+            strip: "Every visual crafted from scratch — no templates, no stock, just original brand work.",
+        },
+        {
+            label: "Video Editing", color: "#9B8CFF",
+            desc: "Scroll-stopping reels, promos, and brand videos — cut, graded, and sound-designed to hold attention.",
+            features: ["Reels & Shorts", "Motion Graphics", "Color Grading"],
+            tech: ["Premiere Pro", "After Effects", "DaVinci Resolve", "Final Cut Pro", "CapCut Pro", "Motion Graphics", "Color Grading", "Sound Design"],
+            badges: ["🎬 Reels & Ads", "🎞️ Motion Graphics", "🔊 Sound Design"],
+            strip: "Raw footage to polished, platform-ready videos — edited to hold attention.",
+        },
+        {
+            label: "E-Commerce", color: "#FF4D8F", wide: true,
+            desc: "Custom online stores plus full seller account management — listings, orders, ads, pricing & performance — across Flipkart, Amazon, Meesho, Blinkit & Instamart.",
+            features: ["Listing & Ads", "Orders & Returns", "Price & Stock"],
+            tech: ["Flipkart", "Amazon", "Meesho", "Blinkit", "Instamart", "WooCommerce", "Shopify", "Stripe", "Razorpay"],
+            badges: ["📋 Listings", "📦 Orders", "📊 Performance"],
+            strip: "We manage, you grow — seller accounts across every major marketplace, handled end to end.",
+        },
+        {
             label: "UI / UX Design", color: "#FF006B",
             desc: "Design-first sprints in Figma — wireframes to polished interfaces before a line of code.",
             features: ["Modern UI", "User-First", "Conversion Driven"],
             tech: ["Figma", "FigJam", "Adobe XD", "Illustrator", "Photoshop", "Prototyping", "Design Systems", "Lottie", "WCAG", "Zeplin", "Storybook", "Framer"],
             badges: ["✏️ Figma-First", "🎯 Conversion", "♿ Accessible"],
             strip: "Every screen reviewed and approved by you before development begins.",
-        },
-        {
-            label: "App Development", color: "#7C9CFF",
-            desc: "Cross-platform iOS & Android apps with Flutter, including e-commerce and shopping apps — one codebase, native performance.",
-            features: ["Cross-Platform", "Fast UI", "Scalable"],
-            tech: ["Flutter", "Dart", "React Native", "JavaScript", "Swift", "Kotlin", "Firebase", "Supabase", "Stripe SDK", "GraphQL", "Push Notifications", "Fastlane"],
-            badges: ["📱 iOS & Android", "🔥 Firebase", "🚀 App Store"],
-            strip: "From MVP to full App Store launch — handled end-to-end.",
         },
         {
             label: "WordPress & CMS", color: "#5A9DFE",
@@ -435,20 +452,12 @@ function HeroServicePanel() {
             strip: "Fully manageable by your team from day one — no technical knowledge needed.",
         },
         {
-            label: "E-Commerce", color: "#FF4D8F",
-            desc: "Custom online stores plus full seller account management — listings, orders, ads, pricing & performance — across Flipkart, Amazon, Meesho, Blinkit & Instamart.",
-            features: ["Listing & Ads", "Orders & Returns", "Price & Stock"],
-            tech: ["Flipkart", "Amazon", "Meesho", "Blinkit", "Instamart", "WooCommerce", "Shopify", "Stripe", "Razorpay"],
-            badges: ["📋 Listings", "📦 Orders", "📊 Performance"],
-            strip: "We manage, you grow — seller accounts across every major marketplace, handled end to end.",
-        },
-        {
-            label: "Graphic Design", color: "#FF5FA2",
-            desc: "Bold logos, brand systems, and print-ready assets — every visual crafted to make your brand impossible to ignore.",
-            features: ["Brand Identity", "Print Ready", "Multi-Format"],
-            tech: ["Adobe Illustrator", "Photoshop", "InDesign", "Figma", "After Effects", "Brand Guidelines", "Typography Systems", "Colour Theory", "Social Media Kits", "Packaging Design"],
-            badges: ["🎨 Brand Identity", "🖨️ Print Ready", "📐 Vector Art"],
-            strip: "Every visual crafted from scratch — no templates, no stock, just original brand work.",
+            label: "App Development", color: "#7C9CFF",
+            desc: "Cross-platform iOS & Android apps with Flutter, including e-commerce and shopping apps — one codebase, native performance.",
+            features: ["Cross-Platform", "Fast UI", "Scalable"],
+            tech: ["Flutter", "Dart", "React Native", "JavaScript", "Swift", "Kotlin", "Firebase", "Supabase", "Stripe SDK", "GraphQL", "Push Notifications", "Fastlane"],
+            badges: ["📱 iOS & Android", "🔥 Firebase", "🚀 App Store"],
+            strip: "From MVP to full App Store launch — handled end-to-end.",
         },
     ];
 
@@ -486,7 +495,7 @@ function HeroServicePanel() {
                 </div>
                 <div className="svc-btn-grid">
                     {SVCS.map((s, i) => (
-                        <button key={s.label} data-hover onClick={() => { setActive(i); setPaused(true); }}
+                        <button key={s.label} data-hover className={s.wide ? "svc-btn-item svc-wide" : "svc-btn-item"} onClick={() => { setActive(i); setPaused(true); }}
                             style={{ fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: "clamp(0.55rem, 1.1vw, 0.65rem)", letterSpacing: "0.01em", padding: "0.55rem 0.4rem", borderRadius: 8, cursor: "none", textAlign: "center", lineHeight: 1.3, background: i === active ? `${s.color}22` : "rgba(255,255,255,0.05)", border: `1.5px solid ${i === active ? s.color : "rgba(120,160,255,0.18)"}`, color: i === active ? s.color : "rgba(180,200,255,0.55)", boxShadow: i === active ? `0 0 14px ${s.color}35` : "none", transition: "all 0.25s" }}>
                             {s.label}
                         </button>
@@ -498,7 +507,7 @@ function HeroServicePanel() {
                     <span className="glow-line bottom" style={{ background: `linear-gradient(270deg, transparent, ${ac}, #FF006B, transparent)`, boxShadow: `0 0 10px ${ac}` }} />
                     <span className="glow-line left" style={{ background: `linear-gradient(0deg, transparent, ${ac}, #FF006B, transparent)`, boxShadow: `0 0 10px ${ac}` }} />
                     <div>
-                        <div style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, fontSize: "clamp(0.85rem,1.8vw,1rem)", color: "#E8F0FF", marginBottom: "0.3rem" }}>{cur.label}</div>
+                        <div className="svc-card-title" style={{ fontFamily: "'Syne',sans-serif", fontWeight: 800, color: "#E8F0FF", marginBottom: "0.3rem" }}>{cur.label}</div>
                         <div style={{ fontFamily: "'Outfit',sans-serif", fontSize: "clamp(0.72rem,1.2vw,0.82rem)", color: "rgba(232,240,255,0.75)", lineHeight: 1.55 }}>{cur.desc}</div>
                     </div>
                     <div className="feat-grid">
@@ -541,11 +550,12 @@ function HomePage({ setPage, goToService, goToContactForm, goToProcessPipeline }
 
     const SERVICES = [
         { num: "01", id: "web", name: "Web Development", Ico: Icon.Globe, desc: "Pixel-perfect, fast-loading websites built with React, Next.js, and Django. Clean code, stunning UI.", tags: ["React", "Next.js", "Django", "TypeScript", "PostgreSQL", "Docker"] },
-        { num: "02", id: "uiux", name: "UI / UX Design", Ico: Icon.Pen, desc: "Figma-first design sprints. Wireframes to polished interfaces — from concept to code.", tags: ["Figma", "Prototyping", "Design Systems", "Wireframing", "Accessibility"] },
-        { num: "03", id: "app", name: "App Development", Ico: Icon.Phone, desc: "Cross-platform mobile apps with Flutter and React Native. One codebase, two platforms.", tags: ["Flutter", "React Native", "Firebase", "iOS/Android", "Dart", "Kotlin"] },
-        { num: "04", id: "wp", name: "WordPress & CMS", Ico: Icon.Zap, desc: "Custom WordPress themes, plugins, and headless CMS setups for editorial teams.", tags: ["WordPress", "WooCommerce", "ACF Pro", "Headless CMS", "REST API"] },
-        { num: "05", id: "ecom", name: "E-Commerce & Marketplace Mgmt", Ico: Icon.Cart, desc: "Custom online stores plus full seller account management on Flipkart, Amazon, Meesho, Blinkit & Instamart — listings, orders, ads, pricing & performance.", tags: ["Flipkart", "Amazon", "Meesho", "Blinkit", "Instamart", "WooCommerce", "Shopify"] },
-        { num: "06", id: "gd", name: "Graphic Design", Ico: Icon.Brush, desc: "Bold logos, brand identities, marketing materials, and print-ready assets crafted to make your brand unforgettable.", tags: ["Illustrator", "Brand Identity", "Typography", "Print Design", "Social Kits", "Figma"] },
+        { num: "02", id: "gd", name: "Graphic Design", Ico: Icon.Brush, desc: "Bold logos, brand identities, marketing materials, and print-ready assets crafted to make your brand unforgettable.", tags: ["Illustrator", "Brand Identity", "Typography", "Print Design", "Social Kits", "Figma"] },
+        { num: "03", id: "video", name: "Video Editing", Ico: Icon.Video, desc: "Reels, promos, and brand videos — edited with rhythm, colour, and sound that keep viewers watching.", tags: ["Premiere Pro", "After Effects", "DaVinci", "Reels", "Motion Graphics", "Color Grading"] },
+        { num: "04", id: "ecom", wide: true, name: "E-Commerce & Marketplace Mgmt", Ico: Icon.Cart, desc: "Custom online stores plus full seller account management on Flipkart, Amazon, Meesho, Blinkit & Instamart — listings, orders, ads, pricing & performance.", tags: ["Flipkart", "Amazon", "Meesho", "Blinkit", "Instamart", "WooCommerce", "Shopify"] },
+        { num: "05", id: "uiux", name: "UI / UX Design", Ico: Icon.Pen, desc: "Figma-first design sprints. Wireframes to polished interfaces — from concept to code.", tags: ["Figma", "Prototyping", "Design Systems", "Wireframing", "Accessibility"] },
+        { num: "06", id: "wp", name: "WordPress & CMS", Ico: Icon.Zap, desc: "Custom WordPress themes, plugins, and headless CMS setups for editorial teams.", tags: ["WordPress", "WooCommerce", "ACF Pro", "Headless CMS", "REST API"] },
+        { num: "07", id: "app", name: "App Development", Ico: Icon.Phone, desc: "Cross-platform mobile apps with Flutter and React Native. One codebase, two platforms.", tags: ["Flutter", "React Native", "Firebase", "iOS/Android", "Dart", "Kotlin"] },
     ];
 
     const [activeCard, setActiveCard] = useState(null);
@@ -641,7 +651,7 @@ function HomePage({ setPage, goToService, goToContactForm, goToProcessPipeline }
                 <div style={{ padding: "2rem 5% 3rem" }}>
                     <div className="svc-grid">
                         {SERVICES.map((s, i) => (
-                            <Reveal key={s.num} delay={(i % 3) * 0.06} style={{ height: "100%", display: "flex" }}>
+                            <Reveal key={s.num} delay={(i % 3) * 0.06} className={s.wide ? "svc-wide" : undefined} style={{ height: "100%", display: "flex" }}>
                                 <SvcCard
                                     s={s}
                                     active={activeCard === i}
