@@ -1,0 +1,7 @@
+# Gugulotre: search engines may read the whole site except the form handlers and private resume links.
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /resumes/
+
+Sitemap: https://www.gugulotre.com/sitemap.xml

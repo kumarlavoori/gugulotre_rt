@@ -590,18 +590,18 @@ function HomePage({ setPage, goToService, goToContactForm, goToProcessPipeline }
                                 <div key={w} style={{ fontSize: "clamp(3.6rem,8.5vw,7.5rem)", color: "transparent", WebkitTextStroke: "1.5px rgba(255,255,255,0.09)", letterSpacing: "0.04em" }}>{w}</div>
                             ))}
                         </div>
-                        <div style={{ position: "relative", zIndex: 1, lineHeight: 0.85, marginBottom: "1.8rem" }}>
-                            <div className="hero-hl-size" style={{ color: "#fff" }}>WE BUILD</div>
-                            <div className="hero-hl-size" style={{ color: "transparent", WebkitTextStroke: `2px ${C.purpleSoft}` }}>DIGITAL</div>
-                            <div className="hero-hl-size" style={{ color: C.coral }}>FUTURES.</div>
-                        </div>
+                        <h1 style={{ position: "relative", zIndex: 1, lineHeight: 0.85, marginBottom: "1.8rem", fontWeight: 400, fontSize: "inherit" }}>
+                            <span className="hero-hl-size" style={{ display: "block", color: "#fff" }}>WE BUILD</span>
+                            <span className="hero-hl-size" style={{ display: "block", color: "transparent", WebkitTextStroke: `2px ${C.purpleSoft}` }}>DIGITAL</span>
+                            <span className="hero-hl-size" style={{ display: "block", color: C.coral }}>FUTURES.</span>
+                        </h1>
                         <p style={{ position: "relative", zIndex: 1, fontFamily: "'Outfit',sans-serif", fontSize: "clamp(0.85rem,1.1vw,0.95rem)", color: "rgba(247,243,236,0.45)", lineHeight: 1.9, maxWidth: 400, marginBottom: "2rem" }}>
                             Gugulotre is a bold digital studio crafting high-performance websites, apps, and digital experiences. We combine cutting-edge technology with pixel-perfect design — delivering premium products at startup speed.
                         </p>
                         <div style={{ position: "relative", zIndex: 1, display: "flex", gap: "0.7rem", flexWrap: "wrap" }}>
                             <BtnCoral onClick={goToContactForm}
                                 style={{ justifyContent: "center", padding: "0.88rem 1.2rem" }}>Start a Project</BtnCoral>
-                            <BtnGhost onClick={() => setPage("Services")} dark style={{ justifyContent: "center", padding: "0.88rem 1.2rem" }}>See Our Work</BtnGhost>
+                            <BtnGhost onClick={() => setPage("Gallery")} dark style={{ justifyContent: "center", padding: "0.88rem 1.2rem" }}>See Our Work</BtnGhost>
                         </div>
                     </div>
                 </div>

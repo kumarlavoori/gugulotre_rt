@@ -4,13 +4,18 @@ import { C } from "./theme";
 import LogoMark from "./LogoMark";
 import "./layout.css";
 
-function NavLink({ label, active, onClick }) {
+/* Real <a href> links, so Google can follow the menu to every page. A normal click still moves around the site
+   without reloading; Ctrl/Cmd-click opens the page in a new tab. */
+const hrefOf = (l) => (l === "Home" ? "/" : `/${l.toLowerCase()}`);
+const plainClick = (e) => !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0);
+
+function NavLink({ label, href, active, onClick, tight = false }) {
     const [hov, setHov] = useState(false);
     return (
-        <button onClick={onClick} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-            style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.83rem", fontWeight: 600, border: "none", cursor: "none", color: active ? "#fff" : hov ? C.coral : C.inkSoft, background: active ? C.coral : hov ? "rgba(255, 0, 107,0.07)" : "transparent", padding: "0.4rem clamp(0.55rem, 1.1vw, 1rem)", borderRadius: 50, boxShadow: active ? "0 3px 12px rgba(255, 0, 107,0.28)" : "none", transition: "all 0.2s" }}>
+        <a href={href} onClick={(e) => { if (plainClick(e)) { e.preventDefault(); onClick(); } }} onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
+            style={{ display: "inline-block", textDecoration: "none", fontFamily: "'Syne',sans-serif", fontSize: "0.83rem", fontWeight: 600, border: "none", cursor: "none", color: active ? "#fff" : hov ? C.coral : C.inkSoft, background: active ? C.coral : hov ? "rgba(255, 0, 107,0.07)" : "transparent", padding: tight ? "0.4rem clamp(0.4rem, calc(1.1vw - 0.2rem), 1rem)" : "0.4rem clamp(0.55rem, 1.1vw, 1rem)", borderRadius: 50, boxShadow: active ? "0 3px 12px rgba(255, 0, 107,0.28)" : "none", transition: "all 0.2s" }}>
             {label}
-        </button>
+        </a>
     );
 }
 
@@ -19,7 +24,7 @@ export default function Navbar({ page, setPage, goToContactForm }) {
     const [width, setWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1280);
 
     // ← REMOVED "Pricing"
-    const links = ["Home", "About", "Services", "Process", "Careers", "Contact"];
+    const links = ["Home", "About", "Services", "Gallery", "Process", "Careers", "Contact"];
 
     useEffect(() => {
         const h = () => setWidth(window.innerWidth);
@@ -34,7 +39,7 @@ export default function Navbar({ page, setPage, goToContactForm }) {
     return (
         <>
             <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 300, height: 70, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5%", background: "rgba(247,243,236,0.96)", backdropFilter: "blur(20px)", boxShadow: "0 1px 0 #EAE4D8", transition: "background 0.4s" }}>
-                <button onClick={() => setPage("Home")} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", padding: 0, flexShrink: 0 }}>
+                <a href="/" aria-label="Gugulotre home" onClick={(e) => { if (plainClick(e)) { e.preventDefault(); setPage("Home"); } }} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", padding: 0, flexShrink: 0, textDecoration: "none" }}>
                     <img
                         src="/Gugulotre.png"
                         alt="Gugulotre"
@@ -42,10 +47,10 @@ export default function Navbar({ page, setPage, goToContactForm }) {
                         style={{ objectFit: "contain", display: "block" }}
                         onError={(e) => { e.currentTarget.style.display = "none"; }}
                     />
-                </button>
+                </a>
 
                 <ul className="nav-links">
-                    {links.map((l) => (<li key={l}><NavLink label={l} active={page === `/${l.toLowerCase()}` || (l === "Home" && page === "/")}
+                    {links.map((l) => (<li key={l}><NavLink label={l} href={hrefOf(l)} tight={width < 1280} active={page === `/${l.toLowerCase()}` || (l === "Home" && page === "/")}
                         onClick={() => setPage(l)} /></li>))}
                 </ul>
 
@@ -79,11 +84,11 @@ export default function Navbar({ page, setPage, goToContactForm }) {
                 {/* Nav links */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", paddingTop: "0.4rem" }}>
                     {links.map((l) => (
-                        <button key={l} onClick={() => setPage(l)} className={`mob-menu-link${page === `/${l.toLowerCase()}` || (l === "Home" && page === "/") ? " active" : ""}`}
+                        <a key={l} href={hrefOf(l)} onClick={(e) => { if (plainClick(e)) { e.preventDefault(); setPage(l); } }} className={`mob-menu-link${page === `/${l.toLowerCase()}` || (l === "Home" && page === "/") ? " active" : ""}`} style={{ textDecoration: "none" }}
                         >
                             <span>{l}</span>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
-                        </button>
+                        </a>
                     ))}
                 </div>
 

@@ -141,17 +141,23 @@ function SectionLabel({ children }) {
     );
 }
 
-function NavLink({ label, onClick, accent = false }) {
+/* Real <a href> links, so Google can follow the footer to every page. A normal click still moves around the
+   site without reloading; Ctrl/Cmd-click opens the page in a new tab. */
+const PATHS = { Home: "/", About: "/about", Services: "/services", Gallery: "/gallery", Process: "/process", Careers: "/careers", Contact: "/contact", Privacy: "/privacy-policy" };
+const plainClick = (e) => !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0);
+
+function NavLink({ label, href, onClick, accent = false }) {
     const [hov, setHov] = useState(false);
     return (
-        <button
+        <a
+            href={href}
             onMouseEnter={() => setHov(true)}
             onMouseLeave={() => setHov(false)}
-            onClick={onClick}
+            onClick={(e) => { if (plainClick(e)) { e.preventDefault(); onClick(); } }}
             style={{
                 background: "none", border: "none", padding: "0.32rem 0",
                 cursor: "pointer", // FIX: was "none"
-                textAlign: "left",
+                textAlign: "left", textDecoration: "none",
                 display: "flex", alignItems: "center", gap: "0.45rem",
                 fontFamily: "'Outfit', sans-serif", fontWeight: 400,
                 fontSize: "0.9rem",
@@ -165,7 +171,7 @@ function NavLink({ label, onClick, accent = false }) {
         >
             {hov && <span style={{ color: C.orange, fontSize: "0.65rem", flexShrink: 0 }}>▸</span>}
             {label}
-        </button>
+        </a>
     );
 }
 
@@ -341,6 +347,7 @@ export default function Footer({ setPage, goToService }) {
         { label: "Home", page: "Home" },
         { label: "About Us", page: "About" },
         { label: "Our Services", page: "Services" },
+        { label: "Our Gallery", page: "Gallery" },
         { label: "Our Process", page: "Process" },
         { label: "Careers", page: "Careers" },
         { label: "Contact", page: "Contact" },
@@ -393,11 +400,12 @@ export default function Footer({ setPage, goToService }) {
                 {/* Brand col */}
                 <div className="ftr-col ftr-brand-col">
                     {/* Footer — brand button */}
-                    <button
-                        onClick={() => go("Home")}
+                    <a
+                        href="/" aria-label="Gugulotre home"
+                        onClick={(e) => { if (plainClick(e)) { e.preventDefault(); go("Home"); } }}
                         style={{
                             background: "none", border: "none",
-                            cursor: "pointer",
+                            cursor: "pointer", textDecoration: "none",
                             display: "inline-flex", alignItems: "center",
                             padding: 0, marginBottom: "1.15rem",
                         }}
@@ -417,7 +425,7 @@ export default function Footer({ setPage, goToService }) {
                                 onError={(e) => { e.currentTarget.style.display = "none"; }}
                             />
                         </span>
-                    </button>
+                    </a>
 
                     <p style={{
                         fontFamily: "'Outfit', sans-serif", fontWeight: 300,
@@ -438,7 +446,7 @@ export default function Footer({ setPage, goToService }) {
                     <SectionLabel>Services</SectionLabel>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         {SERVICES.map(s => (
-                            <NavLink key={s.id} label={s.label} onClick={() => goToService(s.id)} />
+                            <NavLink key={s.id} label={s.label} href="/services" onClick={() => goToService(s.id)} />
                         ))}
                     </div>
                 </div>
@@ -449,7 +457,7 @@ export default function Footer({ setPage, goToService }) {
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         {COMPANY.map(l => (
                             <NavLink
-                                key={l.page} label={l.label}
+                                key={l.page} label={l.label} href={PATHS[l.page]}
                                 onClick={() => go(l.page)}
                                 accent={l.label === "Contact"}
                             />

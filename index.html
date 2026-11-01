@@ -1,19 +1,100 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gugulotre | Website, App & E-Commerce Development, Hyderabad</title>
+  <!-- The title, description, canonical and share tags below are the Home page's. Other pages get their own
+       from src/seo.js (in the browser and when you run npm run build). -->
+  <meta name="description" content="Gugulotre builds fast websites, mobile apps and e-commerce stores for businesses in Hyderabad and beyond, with UI/UX and graphic design. Start your project." />
+  <link rel="canonical" href="https://www.gugulotre.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#1D2060" />
+  <meta name="author" content="Gugulotre" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Gugulotre builds high-performance websites, apps, and e-commerce stores for businesses in Hyderabad and beyond. React, Flutter, WordPress — delivered fast, built right." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Gugulotre" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:title" content="Gugulotre | Website, App & E-Commerce Development, Hyderabad" />
+  <meta property="og:description" content="Gugulotre builds fast websites, mobile apps and e-commerce stores for businesses in Hyderabad and beyond, with UI/UX and graphic design. Start your project." />
+  <meta property="og:url" content="https://www.gugulotre.com/" />
+  <meta property="og:image" content="https://www.gugulotre.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Gugulotre – The Creative Place" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Gugulotre | Website, App & E-Commerce Development, Hyderabad" />
+  <meta name="twitter:description" content="Gugulotre builds fast websites, mobile apps and e-commerce stores for businesses in Hyderabad and beyond, with UI/UX and graphic design. Start your project." />
+  <meta name="twitter:image" content="https://www.gugulotre.com/og-image.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
     rel="stylesheet" />
-  <title>Gugulotre</title>
+
+  <!-- Structured data: tells Google who the business is, where, and what it offers. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://www.gugulotre.com/#business",
+        "name": "Gugulotre – The Creative Place",
+        "alternateName": "Gugulotre",
+        "url": "https://www.gugulotre.com/",
+        "logo": "https://www.gugulotre.com/Gugulotre.png",
+        "image": "https://www.gugulotre.com/og-image.jpg",
+        "description": "Gugulotre builds fast websites, mobile apps and e-commerce stores for businesses in Hyderabad and beyond, with UI/UX and graphic design.",
+        "telephone": "+91 9392281448",
+        "email": "gugulotre@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "SR Nagar",
+          "addressLocality": "Hyderabad",
+          "addressRegion": "Telangana",
+          "addressCountry": "IN"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Hyderabad" },
+          { "@type": "State", "name": "Telangana" },
+          { "@type": "Country", "name": "India" }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/gugulotre/",
+          "https://www.linkedin.com/in/gugulotre/",
+          "https://www.facebook.com/Gugulotre/",
+          "https://www.pinterest.com/gugulotre/"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Gugulotre services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile app development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI / UX design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce stores and seller account management" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress and CMS development" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Graphic design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video editing" } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.gugulotre.com/#website",
+        "url": "https://www.gugulotre.com/",
+        "name": "Gugulotre",
+        "inLanguage": "en-IN",
+        "publisher": { "@id": "https://www.gugulotre.com/#business" }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
