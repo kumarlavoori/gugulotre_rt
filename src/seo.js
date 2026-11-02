@@ -16,26 +16,26 @@ export const SITE = {
    `file` is the page's source file, used to date the page in sitemap.xml. */
 export const PAGES = {
     "/": {
-        title: "Gugulotre | Website, App & E-Commerce Development, Hyderabad",
-        description: "Gugulotre builds fast websites, mobile apps and e-commerce stores for businesses in Hyderabad and beyond, with UI/UX and graphic design. Start your project.",
+        title: "Gugulotre | Graphic Design, Web & App Development, Hyderabad",
+        description: "Logo, packaging and print design, websites, mobile apps and e-commerce store handling from a Hyderabad creative studio. See our work and start your project.",
         heading: "We build digital futures",
         file: "Gugulotrehome.jsx",
     },
     "/about": {
-        title: "About Gugulotre | Web & Product Development Team, Hyderabad",
-        description: "Gugulotre is a web and product development team in Hyderabad. We design and build websites, apps and digital products on time, on scope and to a high standard.",
+        title: "About Gugulotre | Graphic, Web & App Design Studio, Hyderabad",
+        description: "Meet Gugulotre, a creative team in Hyderabad. We design logos, packaging and print work, and build websites, apps and e-commerce stores on time and on scope.",
         heading: "About Gugulotre",
         file: "AboutPage.jsx",
     },
     "/services": {
-        title: "Services | Web, App, UI/UX, E-Commerce & Design | Gugulotre",
-        description: "Web development, mobile apps, UI/UX design, WordPress, e-commerce stores and graphic design from Gugulotre in Hyderabad, all done in-house.",
+        title: "Services | Graphic Design, Web, App & E-Commerce | Gugulotre",
+        description: "Logo, packaging, visiting card and print design, websites, mobile apps, UI/UX, WordPress, e-commerce stores and seller account handling in Hyderabad.",
         heading: "Every service your brand needs online",
         file: "ServicesPage.jsx",
     },
     "/gallery": {
-        title: "Gallery | Our Websites, Apps & Design Work | Gugulotre",
-        description: "See what Gugulotre has made: websites, web apps, mobile apps, e-commerce stores, visiting cards, ID cards, package design and more. Browse by service.",
+        title: "Gallery | Graphic Design, Websites & App Work | Gugulotre",
+        description: "Browse our work: packaging, visiting cards, ID cards, T-shirt designs, websites, web apps and mobile apps. See what we can make for your brand.",
         heading: "See what we make before you start",
         file: "GalleryPage.jsx",
         extraDir: "assets/gallery", // new pictures also count as a change to this page
