@@ -401,11 +401,11 @@ export default function CareersPage() {
                         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.7rem", marginTop: sm ? "1.2rem" : "1.6rem" }}>
                             <button type="button" className="careers-btn" onClick={() => scrollToId("apply-form")} style={{
                                 fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: FS.btn(sm), background: C.coral, color: "#fff", border: "none",
-                                padding: "0.8rem 1.7rem", borderRadius: 50, cursor: "pointer", boxShadow: "0 6px 22px rgba(255, 0, 107,0.35)", width: sm ? "100%" : "auto",
+                                padding: "0.8rem 1.7rem", borderRadius: 50, cursor: "pointer", boxShadow: "0 6px 22px rgba(255, 0, 107,0.35)", width: "auto",
                             }}>Apply for the internship</button>
                             <button type="button" className="careers-btn" onClick={() => scrollToId("careers-tracks")} style={{
                                 fontFamily: "'Syne',sans-serif", fontWeight: 700, fontSize: FS.btn(sm), background: "transparent", color: C.cream,
-                                border: "1.5px solid rgba(247,243,236,0.3)", padding: "0.8rem 1.7rem", borderRadius: 50, cursor: "pointer", width: sm ? "100%" : "auto",
+                                border: "1.5px solid rgba(247,243,236,0.3)", padding: "0.8rem 1.7rem", borderRadius: 50, cursor: "pointer", width: "auto",
                             }}>See the domains</button>
                         </div>
                     </Reveal>
@@ -606,6 +606,8 @@ export default function CareersPage() {
                                     <h3 style={{ fontFamily: "'Bebas Neue',sans-serif", fontWeight: 400, fontSize: "1.7rem", lineHeight: 1, margin: "0 0 0.9rem", color: C.cream }}>BEFORE YOU APPLY</h3>
                                     <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: "0.65rem" }}>
                                         <Fact>The internship is free — no fee to apply or join.</Fact>
+                                        <Fact>This is an in-office internship — you work on-site with our team.</Fact>
+                                        <Fact>Bring your own laptop to work on during the internship.</Fact>
                                         <Fact>You work on real-time projects with our team.</Fact>
                                         <Fact>You get a certificate when you complete it.</Fact>
                                     </ul>

@@ -37,7 +37,7 @@ const SHAPES = {
     "logos": "1 / 1",
     "posters": "3 / 4",
     "flyers": "3 / 4",
-    "brochures": "3 / 4",
+    "brochures": "3 / 2",
     "social-media-posts": "1 / 1",
     "banners": "16 / 9",
     "websites": "16 / 10",
